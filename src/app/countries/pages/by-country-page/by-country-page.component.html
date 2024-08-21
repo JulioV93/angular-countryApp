@@ -1,13 +1,14 @@
 <div class="container-fluid">
     <h2>Por País</h2>
     <hr>
-    
+
     <div class="row">
         <div class="col">
             <!-- SearchBox -->
-            <shared-search-box 
+            <shared-search-box
                 placeholder="Buscar por país"
-                (onValue)="searchByCountry($event)"
+                (onDebounce)="searchByCountry($event)"
+                [initialValue]="initialValue"
             >
             </shared-search-box>
         </div>
@@ -15,7 +16,8 @@
     <hr>
     <div class="row">
         <div class="col">
-            <countries-table [countries]="countries"></countries-table>
+          <shared-loading-spinner *ngIf="isLoading"></shared-loading-spinner>
+          <countries-table [countries]="countries"></countries-table>
         </div>
     </div>
 </div>
